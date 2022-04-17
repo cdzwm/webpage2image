@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="capture" style="padding: 10px; background: rgb(217, 228, 228); width: 200px;">
+        <h4 style="color: #000; ">Hello world!</h4>
+        <h3 style="position: absolute;left:10px;top:10px;">你好</h3>
+    </div>
+    <script src="html2canvas.min.js"></script>
+    <script>
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            let img_data = canvas.toDataURL()
+            let xmlhttp = new XMLHttpRequest()
+            xmlhttp.open("POST", "http://127.0.0.1:3000/save_image")
+            xmlhttp.send(img_data)
+        });
+    </script>
+</body>
+
+</html>
